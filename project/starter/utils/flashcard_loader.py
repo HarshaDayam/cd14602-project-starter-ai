@@ -85,6 +85,11 @@ class FlashcardLoader:
                 "JSON root must be either a list or an object."
             )
 
+        if not cards:
+            raise FlashcardValidationError(
+                "No flashcards found in the dataset."
+            )
+
         validated_cards: List[Dict[str, Any]] = []
         for idx, card in enumerate(cards):
             if not isinstance(card, dict):
@@ -111,8 +116,14 @@ class FlashcardLoader:
                     "and 'back' must be strings."
                 )
 
-            validated_cards.append(
-                {"front": front.strip(), "back": back.strip()}
-            )
+            front_val = front.strip()
+            back_val = back.strip()
+            if not front_val or not back_val:
+                raise FlashcardValidationError(
+                    f"Card at index {idx} fields 'front' "
+                    "and 'back' cannot be empty or only whitespace."
+                )
+
+            validated_cards.append({"front": front_val, "back": back_val})
 
         return validated_cards

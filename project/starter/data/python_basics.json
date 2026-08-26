@@ -1,0 +1,22 @@
+[
+  {
+    "front": "What function is used to get the length of a list in Python?",
+    "back": "len"
+  },
+  {
+    "front": "How do you start a single-line comment in Python?",
+    "back": "#"
+  },
+  {
+    "front": "What keyword is used to define a function in Python?",
+    "back": "def"
+  },
+  {
+    "front": "What data type is used to store key-value pairs in Python?",
+    "back": "dict"
+  },
+  {
+    "front": "Which method is used to add an element to the end of a list?",
+    "back": "append"
+  }
+]

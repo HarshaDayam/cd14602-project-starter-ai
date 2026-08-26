@@ -89,7 +89,7 @@ We enforce strict coding guidelines. Verify code formatting and linting using:
 black --check --line-length 79 .
 
 # Import Organization (isort)
-isort --check --line-length 79 .
+isort --check --profile black --line-length 79 .
 
 # Linting (flake8)
 flake8 --exclude=venv .
