@@ -14,6 +14,17 @@ For each AI interaction, create a new entry with the following structure:
 **AI Tool Used:** Claude/ChatGPT/Copilot/etc.
 **Prompt/Request:** What exactly did you ask the AI?
 **AI Response:** Summary of what the AI generated (don't copy entire code blocks)
+
+**AI Code Review Checklist:**
+- [ ] Correctness and Functionality
+- [ ] Code Quality
+- [ ] Security Considerations
+- [ ] Performance and Efficiency
+- [ ] Error Handling and Robustness
+- [ ] Integration and Compatibility
+- [ ] Testing and Testability
+- [ ] Maintainability
+
 **Changes Made:** What modifications did you make to the AI's suggestions?
 **Reasoning:** Why did you make those changes?
 **Outcome:** What was the final result?
@@ -33,6 +44,16 @@ For each AI interaction, create a new entry with the following structure:
 **Prompt/Request:** "Help me create a Python class for managing tasks with basic CRUD operations. The class should handle task creation, retrieval, completion, and deletion. Include proper error handling and type hints."
 
 **AI Response:** Claude generated a TaskManager class with methods for add_task, get_task, get_all_tasks, complete_task, delete_task, and to_dict. The code included type hints, proper error handling with ValueError for missing tasks, and used datetime for timestamps.
+
+**AI Code Review Checklist:**
+- [x] Correctness and Functionality
+- [x] Code Quality
+- [ ] Security Considerations
+- [ ] Performance and Efficiency
+- [x] Error Handling and Robustness
+- [x] Integration and Compatibility
+- [ ] Testing and Testability
+- [x] Maintainability
 
 **Changes Made:** 
 - Added priority field to tasks with a default value of "medium"
@@ -67,6 +88,16 @@ For each AI interaction, create a new entry with the following structure:
 
 **AI Response:** The AI generated a validator that implemented recursive type checking but did not handle empty objects or verify that fields were specifically strings.
 
+**AI Code Review Checklist:**
+- [x] Correctness and Functionality
+- [x] Code Quality
+- [ ] Security Considerations
+- [ ] Performance and Efficiency
+- [x] Error Handling and Robustness
+- [x] Integration and Compatibility
+- [x] Testing and Testability
+- [ ] Maintainability
+
 **Changes Made:** 
 - Added explicit type assertions to guarantee that `front` and `back` values are strings.
 - Implemented `strip()` on strings during parsing to clean up loaded whitespace.
@@ -91,6 +122,16 @@ For each AI interaction, create a new entry with the following structure:
 **Prompt/Request:** "Generate a Strategy pattern implementation for QuizMode abstract class with SequentialMode, RandomMode, and AdaptiveMode concrete strategies. For AdaptiveMode, when the user gets it wrong, the card should be re-queued so it repeats."
 
 **AI Response:** The AI generated the inheritance structure correctly but initialized `self.current_card = None` inside the `AdaptiveMode` constructor and saved state redundantly.
+
+**AI Code Review Checklist:**
+- [x] Correctness and Functionality
+- [x] Code Quality
+- [ ] Security Considerations
+- [x] Performance and Efficiency
+- [ ] Error Handling and Robustness
+- [x] Integration and Compatibility
+- [ ] Testing and Testability
+- [x] Maintainability
 
 **Changes Made:** 
 - Removed `self.current_card` state variable completely.
@@ -117,6 +158,16 @@ For each AI interaction, create a new entry with the following structure:
 
 **AI Response:** The AI suggested catching KeyboardInterrupt inside the inner loop and using `sys.exit(0)`.
 
+**AI Code Review Checklist:**
+- [x] Correctness and Functionality
+- [x] Code Quality
+- [ ] Security Considerations
+- [ ] Performance and Efficiency
+- [x] Error Handling and Robustness
+- [x] Integration and Compatibility
+- [ ] Testing and Testability
+- [ ] Maintainability
+
 **Changes Made:** 
 - Re-raised KeyboardInterrupt from the inner loop to the outer loop to ensure clean, centralized cleanup logic.
 - Wrapped CLI statistics saving so that stats are only written if at least one question was attempted.
@@ -140,6 +191,16 @@ For each AI interaction, create a new entry with the following structure:
 **Prompt/Request:** "How can I simulate a KeyboardInterrupt inside pytest when testing the main.main CLI execution without actually interrupting the test runner?"
 
 **AI Response:** The AI recommended patching `builtins.input` with a `side_effect=KeyboardInterrupt`.
+
+**AI Code Review Checklist:**
+- [x] Correctness and Functionality
+- [ ] Code Quality
+- [ ] Security Considerations
+- [ ] Performance and Efficiency
+- [ ] Error Handling and Robustness
+- [ ] Integration and Compatibility
+- [x] Testing and Testability
+- [ ] Maintainability
 
 **Changes Made:** 
 - Wrapped the `main.main()` invocation with a `pytest.raises(SystemExit)` context block.
@@ -165,6 +226,16 @@ For each AI interaction, create a new entry with the following structure:
 **Prompt/Request:** "Reformat these long docstrings and string comments to adhere to PEP 8 line length limits (maximum 79 characters)."
 
 **AI Response:** The AI suggested wrapping strings with parenthesized continuation blocks.
+
+**AI Code Review Checklist:**
+- [ ] Correctness and Functionality
+- [x] Code Quality
+- [ ] Security Considerations
+- [ ] Performance and Efficiency
+- [ ] Error Handling and Robustness
+- [ ] Integration and Compatibility
+- [ ] Testing and Testability
+- [ ] Maintainability
 
 **Changes Made:** 
 - Wrapped all multi-line error strings and arguments into nested parenthesized implicit concatenations.

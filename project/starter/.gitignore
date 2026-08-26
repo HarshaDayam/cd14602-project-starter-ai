@@ -13,7 +13,7 @@ __pycache__/
 htmlcov/
 
 # Data files
-data/
+data/quiz_stats.json
 
 # IDE
 .vscode/

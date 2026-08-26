@@ -71,3 +71,27 @@ def test_load_invalid_schema_types(tmp_path):
     with pytest.raises(FlashcardValidationError) as excinfo:
         FlashcardLoader.load_from_file(str(file))
     assert "must be strings" in str(excinfo.value)
+
+
+def test_load_empty_flashcard_list(tmp_path):
+    """Verifies that empty flashcard datasets raise a validation error."""
+    file_array = tmp_path / "empty_array.json"
+    file_array.write_text("[]", encoding="utf-8")
+    with pytest.raises(FlashcardValidationError) as excinfo:
+        FlashcardLoader.load_from_file(str(file_array))
+    assert "No flashcards found in the dataset" in str(excinfo.value)
+
+    file_obj = tmp_path / "empty_object.json"
+    file_obj.write_text('{"cards": []}', encoding="utf-8")
+    with pytest.raises(FlashcardValidationError) as excinfo:
+        FlashcardLoader.load_from_file(str(file_obj))
+    assert "No flashcards found in the dataset" in str(excinfo.value)
+
+
+def test_load_whitespace_only_fields(tmp_path):
+    """Verifies that fields containing only spaces raise a validation error."""
+    file = tmp_path / "whitespace.json"
+    file.write_text('[{"front": "   ", "back": "A1"}]', encoding="utf-8")
+    with pytest.raises(FlashcardValidationError) as excinfo:
+        FlashcardLoader.load_from_file(str(file))
+    assert "cannot be empty or only whitespace" in str(excinfo.value)
